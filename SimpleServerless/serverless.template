@@ -1,16 +1,16 @@
 {
   "AWSTemplateFormatVersion" : "2010-09-09",
   "Transform" : "AWS::Serverless-2016-10-31",
-  "Description" : "An AWS Serverless Application.",
+  "Description" : "Simple Serverless Application by Rob",
 
   "Resources" : {
 
-    "Get" : {
+    "GetUser" : {
       "Type" : "AWS::Serverless::Function",
       "Properties": {
-        "Handler": "SimpleServerless::SimpleServerless.Functions::Get",
+        "Handler": "SimpleServerless::SimpleServerless.UserLambdas::GetUser",
         "Runtime": "dotnetcore2.0",
-        "CodeUri": "",
+        "CodeUri": "s3://corpusfrisky.simpleserverless/code/",
         "MemorySize": 256,
         "Timeout": 30,
         "Role": null,

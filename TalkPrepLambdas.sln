@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SplitFileByLinesLambda", "SplitFileByLinesLambda\SplitFileByLinesLambda.csproj", "{A343D965-F4E6-4373-B738-00AD270CBB04}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleServerless", "SimpleServerless\SimpleServerless.csproj", "{2BC9B078-D97A-4A96-A047-7E79FF719EB6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleServerless.Tests", "SimpleServerless.Tests\SimpleServerless.Tests.csproj", "{78B2EB7B-6DA8-4B58-AA94-31813FAB420A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A343D965-F4E6-4373-B738-00AD270CBB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A343D965-F4E6-4373-B738-00AD270CBB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A343D965-F4E6-4373-B738-00AD270CBB04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BC9B078-D97A-4A96-A047-7E79FF719EB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BC9B078-D97A-4A96-A047-7E79FF719EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BC9B078-D97A-4A96-A047-7E79FF719EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BC9B078-D97A-4A96-A047-7E79FF719EB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78B2EB7B-6DA8-4B58-AA94-31813FAB420A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78B2EB7B-6DA8-4B58-AA94-31813FAB420A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78B2EB7B-6DA8-4B58-AA94-31813FAB420A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78B2EB7B-6DA8-4B58-AA94-31813FAB420A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,23 +1,19 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
-
-using Amazon.Lambda.Core;
 using Amazon.Lambda.APIGatewayEvents;
+using Amazon.Lambda.Core;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 
-namespace SimpleServerless
+namespace SimpleServerless.Services
 {
-    public class Functions
+    public class UserLambdas
     {
         /// <summary>
         /// Default constructor that Lambda will invoke.
         /// </summary>
-        public Functions()
+        public UserLambdas()
         {
         }
 
@@ -26,10 +22,11 @@ namespace SimpleServerless
         /// A Lambda function to respond to HTTP Get methods from API Gateway
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="context"></param>
         /// <returns>The list of blogs</returns>
-        public APIGatewayProxyResponse Get(APIGatewayProxyRequest request, ILambdaContext context)
+        public APIGatewayProxyResponse GetUser(APIGatewayProxyRequest request, ILambdaContext context)
         {
-            context.Logger.LogLine("Get Request\n");
+            context.Logger.LogLine("GetUser called.");
 
             var response = new APIGatewayProxyResponse
             {
