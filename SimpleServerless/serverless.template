@@ -8,7 +8,7 @@
     "GetUser" : {
       "Type" : "AWS::Serverless::Function",
       "Properties": {
-        "Handler": "SimpleServerless::SimpleServerless.UserLambdas::GetUser",
+        "Handler": "SimpleServerless::SimpleServerless.Services.UserLambdas::GetUser",
         "Runtime": "dotnetcore2.0",
         "CodeUri": "s3://corpusfrisky.simpleserverless/code/",
         "MemorySize": 256,
@@ -19,7 +19,7 @@
           "PutResource": {
             "Type": "Api",
             "Properties": {
-              "Path": "/",
+              "Path": "/User/",
               "Method": "GET"
             }
           }
