@@ -49,14 +49,13 @@ namespace SplitFileByLinesLambda
         public async Task<string> FunctionHandler(S3Event evnt, ILambdaContext context)
         {
             var s3Event = evnt.Records?[0].S3;
-            if(s3Event == null)
+            if(s3Event == null || !s3Event.Object.Key.EndsWith("txt"))
             {
                 return null;
             }
 
             try
             {
-//                var response = await this.S3Client.GetObjectMetadataAsync(s3Event.Bucket.Name, s3Event.Object.Key);
                 var s3Object = await S3Client.GetObjectAsync(s3Event.Bucket.Name, s3Event.Object.Key);
                 var buffer = new byte[100000];
                 using (var inStream = s3Object.ResponseStream)
@@ -71,8 +70,8 @@ namespace SplitFileByLinesLambda
                 {
                     await S3Client.PutObjectAsync(new PutObjectRequest()
                     {
-                        BucketName = "corpusfrisky.splitdest",
-                        Key = s3Event.Object.Key + counter++,
+                        BucketName = Environment.GetEnvironmentVariable("DestinationBucket"),
+                        Key = s3Event.Object.Key.Replace(".txt", $"{counter++}.txt"),
                         ContentBody = line
                     });
                 }
