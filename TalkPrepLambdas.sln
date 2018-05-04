@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SplitFileByLinesLambda", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleServerless", "SimpleServerless\SimpleServerless.csproj", "{2BC9B078-D97A-4A96-A047-7E79FF719EB6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleServerless.Tests", "SimpleServerless.Tests\SimpleServerless.Tests.csproj", "{78B2EB7B-6DA8-4B58-AA94-31813FAB420A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleServerlessSharedLib", "SimpleServerlessSharedLib\SimpleServerlessSharedLib.csproj", "{DBA91EA1-ABB3-4080-8E64-F2E6B631F6CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.csproj", "{FEA5FF95-C7E5-49BC-AA21-43B30A67D09C}"
@@ -27,10 +25,6 @@ Global
 		{2BC9B078-D97A-4A96-A047-7E79FF719EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BC9B078-D97A-4A96-A047-7E79FF719EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BC9B078-D97A-4A96-A047-7E79FF719EB6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{78B2EB7B-6DA8-4B58-AA94-31813FAB420A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78B2EB7B-6DA8-4B58-AA94-31813FAB420A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78B2EB7B-6DA8-4B58-AA94-31813FAB420A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{78B2EB7B-6DA8-4B58-AA94-31813FAB420A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DBA91EA1-ABB3-4080-8E64-F2E6B631F6CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DBA91EA1-ABB3-4080-8E64-F2E6B631F6CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBA91EA1-ABB3-4080-8E64-F2E6B631F6CC}.Release|Any CPU.ActiveCfg = Release|Any CPU

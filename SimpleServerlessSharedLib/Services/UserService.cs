@@ -6,7 +6,7 @@ using SimpleServerlessSharedLib.Models;
 
 namespace SimpleServerlessSharedLib.Services
 {
-    class UserService
+    public class UserService
     {
         static readonly List<User> Users = new List<User>
         {

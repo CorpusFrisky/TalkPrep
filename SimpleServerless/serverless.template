@@ -8,7 +8,7 @@
     "GetUser" : {
       "Type" : "AWS::Serverless::Function",
       "Properties": {
-        "Handler": "SimpleServerless::SimpleServerless.Services.UserLambdas::GetUser",
+        "Handler": "SimpleServerless::SimpleServerless.Services.UserLambdas::GetUserById",
         "Runtime": "dotnetcore2.0",
         "CodeUri": "s3://corpusfrisky.simpleserverless/code/",
         "MemorySize": 256,
