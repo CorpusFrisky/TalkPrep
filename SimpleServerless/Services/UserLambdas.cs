@@ -31,8 +31,7 @@ namespace SimpleServerless.Services
         public APIGatewayProxyResponse GetUserById(APIGatewayProxyRequest request, ILambdaContext context)
         {
             context.Logger.LogLine("GetUser called.");
-
-            var id = int.Parse(request.QueryStringParameters["id"]);
+            var id = int.Parse(request.PathParameters["id"]);
 
             var response = new APIGatewayProxyResponse
             {

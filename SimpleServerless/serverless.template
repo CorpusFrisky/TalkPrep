@@ -19,7 +19,7 @@
           "PutResource": {
             "Type": "Api",
             "Properties": {
-              "Path": "/User/",
+              "Path": "/user/{id}",
               "Method": "GET"
             }
           }
