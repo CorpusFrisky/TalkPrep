@@ -13,44 +13,50 @@ namespace SimpleServerlessCustomAuth
 {
     public class CustomAuthLambda
     {
-        private static Policy _unauthorizedPolicy;
+        private static APIGatewayCustomAuthorizerPolicy _unauthorizedPolicy;
 
         public CustomAuthLambda()
         {
-            _unauthorizedPolicy = new Policy("Unauthorized",
-                new List<Statement>()
+            _unauthorizedPolicy = new APIGatewayCustomAuthorizerPolicy()
+            {
+                Statement = new List<APIGatewayCustomAuthorizerPolicy.IAMPolicyStatement>()
                 {
-                    new Statement(Statement.StatementEffect.Deny)
-                });
+                    new APIGatewayCustomAuthorizerPolicy.IAMPolicyStatement()
+                    {
+                        Effect = "Deny"
+                    }
+                }
+            };
         }
+
         /// <summary>
         /// A simple function that takes a string and does a ToUpper
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="authRequest"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public Policy FunctionHandler(APIGatewayCustomAuthorizerRequest authRequest, ILambdaContext context)
+        public APIGatewayCustomAuthorizerResponse FunctionHandler(APIGatewayCustomAuthorizerRequest authRequest,
+            ILambdaContext context)
         {
-            if (string.Equals(authRequest?.AuthorizationToken, "allow", StringComparison.OrdinalIgnoreCase))
-            {
-                return new Policy("WelcomeIn", 
-                    new List<Statement>()
-                    {
-                        new Statement(Statement.StatementEffect.Allow)
-                        {
-                            Actions = new List<ActionIdentifier>()
-                            {
-                                new ActionIdentifier("execute-api:Invoke")
-                            },
-                            Resources = new List<Resource>()
-                            {
-                                new Resource(authRequest.MethodArn)
-                            }
-                        }
-                    });
-            }
+            var authenticated = authRequest != null && String.Equals(authRequest.AuthorizationToken, "allow");
 
-            return _unauthorizedPolicy;
+            var policy = new APIGatewayCustomAuthorizerPolicy()
+            {
+                Statement = new List<APIGatewayCustomAuthorizerPolicy.IAMPolicyStatement>()
+                {
+                    new APIGatewayCustomAuthorizerPolicy.IAMPolicyStatement()
+                    {
+                        Action = new HashSet<string>() {"execute-api:Invoke"},
+                        Effect = authenticated ? "Allow" : "Deny",
+                        Resource = new HashSet<string>() {authRequest.MethodArn}
+                    }
+                }
+            };
+
+            return new APIGatewayCustomAuthorizerResponse()
+            {
+                PolicyDocument = policy
+            };
         }
     }
 }
