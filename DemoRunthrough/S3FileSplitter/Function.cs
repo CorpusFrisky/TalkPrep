@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +13,7 @@ using Amazon.S3.Util;
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 
-namespace SplitFileByLinesLambda
+namespace S3FileSplitter
 {
     public class Function
     {
@@ -49,7 +48,7 @@ namespace SplitFileByLinesLambda
         public async Task<string> FunctionHandler(S3Event evnt, ILambdaContext context)
         {
             var s3Event = evnt.Records?[0].S3;
-            if(s3Event == null || !s3Event.Object.Key.EndsWith("txt"))
+            if (s3Event == null || !s3Event.Object.Key.EndsWith("txt"))
             {
                 return null;
             }
@@ -70,14 +69,14 @@ namespace SplitFileByLinesLambda
                 {
                     await S3Client.PutObjectAsync(new PutObjectRequest()
                     {
-                        BucketName = "corpusfrisky.splitdest",
-                        //BucketName = Environment.GetEnvironmentVariable("DestinationBucket"),
+                        //BucketName = "corpusfrisky.splitdest",
+                        BucketName = Environment.GetEnvironmentVariable("DestinationBucket"),
                         Key = s3Event.Object.Key.Replace(".txt", $"{counter++}.txt"),
                         ContentBody = line
                     });
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 context.Logger.LogLine($"Error getting object {s3Event.Object.Key} from bucket {s3Event.Bucket.Name}. Make sure they exist and your bucket is in the same region as this function.");
                 context.Logger.LogLine(e.Message);

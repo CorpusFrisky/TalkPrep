@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S3FileSplitter", "S3FileSplitter\S3FileSplitter.csproj", "{00BE0575-19D6-4784-B6D9-C18AABBED844}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWSServerless1", "AWSServerless1\AWSServerless1.csproj", "{94E8F171-B66B-4403-98AB-A929CF89150D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleServerlessSharedLib", "..\SimpleServerlessSharedLib\SimpleServerlessSharedLib.csproj", "{3E0F8AD6-EAB1-4173-8F25-5F75062F39BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00BE0575-19D6-4784-B6D9-C18AABBED844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00BE0575-19D6-4784-B6D9-C18AABBED844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00BE0575-19D6-4784-B6D9-C18AABBED844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00BE0575-19D6-4784-B6D9-C18AABBED844}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94E8F171-B66B-4403-98AB-A929CF89150D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94E8F171-B66B-4403-98AB-A929CF89150D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94E8F171-B66B-4403-98AB-A929CF89150D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94E8F171-B66B-4403-98AB-A929CF89150D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E0F8AD6-EAB1-4173-8F25-5F75062F39BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E0F8AD6-EAB1-4173-8F25-5F75062F39BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E0F8AD6-EAB1-4173-8F25-5F75062F39BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E0F8AD6-EAB1-4173-8F25-5F75062F39BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {586E383D-5C0B-4047-98C7-4AA0217D059C}
+	EndGlobalSection
+EndGlobal

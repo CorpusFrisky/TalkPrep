@@ -1,20 +1,17 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using Amazon.Lambda.Core;
 using Amazon.Lambda.S3Events;
 using Amazon.S3;
-using Amazon.S3.Model;
 using Amazon.S3.Util;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 
-namespace SplitFileByLinesLambda
+namespace DemoRunthrough
 {
     public class Function
     {
@@ -49,33 +46,15 @@ namespace SplitFileByLinesLambda
         public async Task<string> FunctionHandler(S3Event evnt, ILambdaContext context)
         {
             var s3Event = evnt.Records?[0].S3;
-            if(s3Event == null || !s3Event.Object.Key.EndsWith("txt"))
+            if(s3Event == null)
             {
                 return null;
             }
 
             try
             {
-                var s3Object = await S3Client.GetObjectAsync(s3Event.Bucket.Name, s3Event.Object.Key);
-                var buffer = new byte[100000];
-                using (var inStream = s3Object.ResponseStream)
-                {
-                    await inStream.ReadAsync(buffer, 0, 100000);
-                }
-
-                var contentAsString = Encoding.UTF8.GetString(buffer);
-                var lines = contentAsString.Split("\n");
-                var counter = 0;
-                foreach (var line in lines)
-                {
-                    await S3Client.PutObjectAsync(new PutObjectRequest()
-                    {
-                        BucketName = "corpusfrisky.splitdest",
-                        //BucketName = Environment.GetEnvironmentVariable("DestinationBucket"),
-                        Key = s3Event.Object.Key.Replace(".txt", $"{counter++}.txt"),
-                        ContentBody = line
-                    });
-                }
+                var response = await this.S3Client.GetObjectMetadataAsync(s3Event.Bucket.Name, s3Event.Object.Key);
+                return response.Headers.ContentType;
             }
             catch(Exception e)
             {
@@ -84,8 +63,6 @@ namespace SplitFileByLinesLambda
                 context.Logger.LogLine(e.StackTrace);
                 throw;
             }
-
-            return "";
         }
     }
 }
